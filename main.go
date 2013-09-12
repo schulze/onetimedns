@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-var configFile = flag.String("config", "", "path to configuration file") 
+var configFile = flag.String("config", "", "path to configuration file")
 
 // Config represents a JSON config file ~/.config/onetimedns.
 type Config struct {
@@ -20,8 +20,8 @@ type Config struct {
 type Record struct {
 	Expires int
 	Address string `json:"record"`
-	Status string
-	Value string
+	Status  string
+	Value   string
 }
 
 func (r *Record) Get(url string) error {
@@ -62,7 +62,7 @@ func main() {
 	r := new(Record)
 	tick := time.Tick(10 * time.Minute)
 	for _ = range tick {
-    	err = r.Get(url)
+		err = r.Get(url)
 		if err != nil {
 			log.Println(err)
 		} else {
